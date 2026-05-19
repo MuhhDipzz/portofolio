@@ -8,7 +8,7 @@ const projects = [
     description:
       "Full-stack storefront with product catalog, cart, and checkout. Built with Next.js and Supabase for auth and data.",
     tech: ["Next.js", "Tailwind CSS", "Supabase", "Stripe"],
-    gradient: "from-[oklch(0.7_0.2_250)] to-[oklch(0.65_0.25_295)]",
+    image: "/e-commers.png",
     demo: "https://azure-bloom-ui-xi.vercel.app/",
     code: "https://github.com/MuhhDipzz/ecommers-tokoku-nextjs",
   },
@@ -17,18 +17,18 @@ const projects = [
     description:
       "Clean, keyboard-friendly task manager with drag-to-reorder, filters, and persistent storage.",
     tech: ["React", "Tailwind CSS", "LocalStorage"],
-    gradient: "from-[oklch(0.75_0.2_200)] to-[oklch(0.7_0.2_250)]",
-    demo: "#",
-    code: "#",
+    image: "/todoapp.png",
+    demo: "https://todo-app-smoky-ten.vercel.app",
+    code: "https://github.com/MuhhDipzz/frontend-todoapp",
   },
   {
-    title: "Dashboard App",
+    title: "Content Management Contact",
     description:
       "Responsive analytics dashboard with charts, dark mode, and a glassmorphism UI system.",
     tech: ["Next.js", "Bootstrap", "Recharts"],
-    gradient: "from-[oklch(0.7_0.22_310)] to-[oklch(0.7_0.2_250)]",
-    demo: "#",
-    code: "#",
+    image: "/CM.png",
+    demo: "https://contentmanagementproject.vercel.app/login",
+    code: "https://github.com/MuhhDipzz/Content-Management-FE",
   },
 ];
 
@@ -51,9 +51,22 @@ export function Projects() {
             whileHover={{ y: -8 }}
             className="glass ring-gradient group relative flex flex-col overflow-hidden rounded-3xl transition-all hover:glow"
           >
-            <div className={`relative h-44 overflow-hidden bg-gradient-to-br ${p.gradient}`}>
+            <div className="relative h-44 overflow-hidden">
+              {p.image ? (
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="h-full w-full object-cover"
+                />
+              ) : (
+                <div
+                  className={`h-full w-full bg-gradient-to-br ${p.gradient}`}
+                />
+              )}
+
               <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,oklch(1_0_0/0.25),transparent_60%)]" />
               <div className="absolute inset-0 animated-grid opacity-30" />
+
               <div className="absolute bottom-3 right-3 rounded-full bg-black/30 px-3 py-1 text-xs font-medium text-white backdrop-blur">
                 Project {String(i + 1).padStart(2, "0")}
               </div>
@@ -63,6 +76,7 @@ export function Projects() {
               <h3 className="text-lg font-semibold transition-colors group-hover:text-gradient">
                 {p.title}
               </h3>
+
               <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                 {p.description}
               </p>
@@ -88,6 +102,7 @@ export function Projects() {
                   <ExternalLink className="h-3.5 w-3.5" />
                   Live Demo
                 </a>
+
                 <a
                   href={p.code}
                   target="_blank"
